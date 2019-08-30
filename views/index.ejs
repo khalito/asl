@@ -4,15 +4,12 @@
         <meta charset="utf-8">
         <title>Dictionary</title>
     </head>
+
     <body>
-
-        Database name : <%= dbName %> <br>
-        Collection name : <%= colName%> <br>
-        Documents in collection : <%= docCount %> <br>
-
-        <form class="" action="/db" method="get">
-                <input type="submit" name="createView" value='Create view'>
+        <form class="" action="/" method="post">
+                <input type="submit" name="addNewWord" value='Add a new word'>
         </form>
+
         <form class="" action="/result" method="get">
                 <input type="text" name="q" id='searchText'autofocus>
                 <input type="submit" value='Yalla !'>

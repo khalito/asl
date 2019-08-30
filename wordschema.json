@@ -1,0 +1,140 @@
+{
+	"word": "كتب",
+	"type": "root",
+	"translation": "to write",
+	"verbs": {
+		"form1": {
+			"perfect": {
+				"ana": {
+					"ar": "كتبت",
+					"en": "ktbt"
+					},
+				"anta": {
+					"ar": "كتبت",
+					"en": "ktbt"
+					},
+				"anti": {
+					"ar": "كتبت",
+					"en": "ktbt"
+					},
+				"huwa": {
+					"ar": "كتب",
+					"en": "ktb"
+					},
+				"heeya": {
+					"ar": "كتبت",
+					"en": "ktbt"
+					},
+				"antumaa_male": {
+					"ar": "كتبتما",
+					"en": "ktbtma"
+					},
+				"antumaa_female": {
+					"ar": "كتبتما",
+					"en": "ktbtma"
+					},
+				"humaa_male": {
+					"ar": "كتبا",
+					"en": "ktba"
+					},
+				"humaa_female": {
+					"ar": "كتبتا",
+					"en": "ktbta"
+					},
+				"nahnu": {
+					"ar": "كتبنا",
+					"en": "ktbna"
+					},
+				"antum": {
+					"ar": "كتبتم",
+					"en": "ktbtm"
+					},
+				"antunna": {
+					"ar": "كتبتن",
+					"en": "ktbtn"
+					},
+				"hum": {
+					"ar": "كتبوا",
+					"en": "ktbtu"
+					},
+				"hunna":{
+					"ar": "كتبن",
+					"en": "ktbtn"
+					}
+				},
+			"imperfect": {
+				"ana": {
+					"ar": "اكتب",
+					"en": "ktb"
+					},
+				"anta": {
+					"ar": "تكتب",
+					"en": "tktb"
+					},
+				"anti": {
+					"ar": "تكتبين",
+					"en": "tkben"
+					},
+				"huwa": {
+					"ar": "يكتب",
+					"en": "yktb"
+					},
+				"heeya": {
+					"ar": "تكتب",
+					"en": "tktb"
+					},
+				"antumaa_male": {
+					"ar": "تكتبان",
+					"en": "tktban"
+					},
+				"antumaa_female": {
+					"ar": "تكتبان",
+					"en": "tktban"
+					},
+				"humaa_male": {
+					"ar": "يكتبان",
+					"en": "yktban"
+					},
+				"humaa_female": {
+					"ar": "تكتبان",
+					"en": "tkban"
+					},
+				"nahnu": {
+					"ar": "نكتب",
+					"en": "nktb"
+					},
+				"antum": {
+					"ar": "تكتبون",
+					"en": "tktbun"
+					},
+				"antunna": {
+					"ar": "تكتبن",
+					"en": "tktbn"
+					},
+				"hum": {
+					"ar": "يكتبون",
+					"en": "yktbun"
+					},
+				"hunna":{
+					"ar": "يكتبن",
+					"en": "yktbn"
+					}
+				},
+			"nouns": [
+				{
+					"singular": "كتاب",
+					"plural": "كتب",
+					"translation": "book"
+				}
+				]
+			}
+		},
+	"otherNouns": [
+		],
+	"adverbs": [
+		{
+		  "word": "كتابا",
+		  "translation": "bookily"
+		}
+		]
+}

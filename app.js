@@ -5,40 +5,22 @@ const path = require('path');
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'));
 app.use(express.static(path.join(__dirname, 'public')));
-const MongoClient = require('mongodb').MongoClient
-const assert = require('assert');
+
 const connected_db = 'dict';
-const connected_collection = 'vocab';
 const url = 'mongodb://localhost:27017/' + connected_db;
-var docCount = 2;
+const mongoose = require('mongoose');
+const db = mongoose.connection;
 
-MongoClient.connect(url, function(err, database) {
-    assert(err == null);
-    console.log("Connected successfully to DB server");
-    console.log("Database name: " + database.s.options.dbName);
-    const db = database.db(connected_db);
-    const collection = db.collection(connected_collection);
-    collection.countDocuments(function(err, result) {
-        docCount = result;
-        console.log(docCount);
-    })
-})
+const routes = require('./dictRoutes');
 
-// app.get('/', function(req, res) {
-//     res.render('index');
-// })
+// Load the database and spit out a console message
+mongoose.connect(url, {useNewUrlParser : true});
+db.on('error', console.error.bind(console, 'connection error'));
+db.once('open', function() {
+    console.log('We are connected with mongoose !');
+    console.log('Database name: ' + connected_db);
+});
 
-app.get('/result', function(req, res) {
-    let q = req.query['q'];
-    res.render('result', {'q' : q});
-})
+routes(app);
 
-app.get('/', function(req, res, next) {
-    res.render('index', {
-        'dbName' : connected_db,
-        'colName' : connected_collection,
-        'docCount' : docCount // why is this not working ??????
-    });
-)
-
-app.listen(port, () => console.log('Listening on port ' + port));
+app.listen(port, () => console.log(`Listening on port ${port}`));
