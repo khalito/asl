@@ -2,21 +2,15 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title></title>
+        <title>Search result</title>
     </head>
     <body>
-        You searched for : <b>"<%= q %>"</b><br>
+        <h1>
+            You searched for : <b>"<%= q %>"</b><br>
+        </h1>
 
-        <%- include wordDetails.ejs %>
+        <%- include wordDetails.ejs %><br>
 
-        <form class="" action="/" method="post">
-            <input type="submit" name="addNewWord" value='Add a new word'>
-        </form>
-
-        <form class="" action="/searchResult" method="get">
-            <input type="text" name="q" id='searchText' autofocus>
-            <input type="submit" value='Yalla !'>
-        </form>
 
         <a href="/">Back to search</a>
 
