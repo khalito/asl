@@ -1,0 +1,9 @@
+To do list
+
+- get a word from the DB
+
+- display the retrieved word properly on the page after a get or a post request
+
+- show all words (only titles) in the db (with a button)
+
+- do a app.all to always show a timestamp in the console for every request
