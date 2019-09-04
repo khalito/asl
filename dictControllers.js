@@ -14,7 +14,7 @@ function addNewWord(req, res) {
         if (err) {
             res.send(err);
         }
-        res.render('newWord', savedWord); // as it is, this displays the raw json object on the page
+        res.render('newWordResult', savedWord); // as it is, this displays the raw json object on the page
     });
 }
 
