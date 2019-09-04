@@ -2,10 +2,12 @@ const express = require('express');
 const app = express();
 const port = 3001;
 const path = require('path');
+const bodyParser = require('body-parser');
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'));
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(bodyParser.urlencoded({extended : true}));
+app.use(bodyParser.json());
 const connected_db = 'dict';
 const url = 'mongodb://localhost:27017/' + connected_db;
 const mongoose = require('mongoose');

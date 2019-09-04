@@ -6,12 +6,13 @@
     </head>
 
     <body>
-        <form class="" action="/" method="post">
-                <input type="submit" name="addNewWord" value='Add a new word'>
-        </form>
 
-        <form class="" action="/result" method="get">
-                <input type="text" name="q" id='searchText'autofocus>
+        <%- include addNewWordForm.ejs %>
+        <br>
+        <h1>Search for a word</h1>
+        <form class="" action="/searchResult" method="get">
+                <label for="searchText">Enter a word</label><br>
+                <input type="text" name="q" id='searchText' autofocus>
                 <input type="submit" value='Yalla !'>
         </form>
 

@@ -3,30 +3,44 @@ const addNewWord = require('./dictControllers');
 function getTimestamp() {
     var date = new Date();
     var d = date.getDate();
-    var M = date.getMonth();
+    var m = date.getMonth();
     var y = date.getFullYear();
     var h = date.getHours();
-    var m = date.getMinutes();
+    var min = date.getMinutes();
     var s = date.getSeconds();
-    var formattedDate = d + "." + M + "." + y + " " + h + ":" + m + ":" + s;
+    var formattedDate = d + "." + m + "." + y + " " + h + ":" + min + ":" + s;
     return formattedDate;
 }
 
 const routes = (app) => {
     app.route('/')
-    .get((req, res, next) => {
-        console.log(`GET request on ${req.originalUrl}`);
+    .all((req, res, next) => {
+        console.log(`${req.method} request made on ${req.originalUrl} at ${getTimestamp()}`);
         next();
-    }, (req, res, next) => {
+    })
+    .get((req, res, next) => {
         res.render('index');
     })
-    .post((req, res, next) => {
-        console.log('POST request made at: ' + getTimestamp());
+
+    app.route('/searchResult')
+    .get((req, res, next) => {
+        //query the database
         next();
     }, (req, res, next) => {
+        let word = 'this is a test word';
+        let type = 'this is a test type';
+        let translation = 'this is a test translation';
+        res.render('searchResult', {
+            'q' : req.query.q,
+            'word' : 'word',
+            'type' : 'type',
+            'translation' : 'translation'});
+    });
+
+    app.route('/newWord')
+    .post((req, res, next) => {
         addNewWord(req, res);
     });
-    // .post(addNewWord);
 };
 
 module.exports = routes;
