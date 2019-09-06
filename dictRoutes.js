@@ -1,4 +1,4 @@
-const addNewWord = require('./dictControllers');
+const { addNewWord, findWord } = require('./dictControllers');
 
 function getTimestamp() {
     var date = new Date();
@@ -13,11 +13,12 @@ function getTimestamp() {
 }
 
 const routes = (app) => {
-    app.route('/')
-    .all((req, res, next) => {
+    app.use((req, res, next) => {
         console.log(`${req.method} request made on ${req.originalUrl} at ${getTimestamp()}`);
-        next();
-    })
+    next();
+    });
+
+    app.route('/')
     .get((req, res, next) => {
         res.render('index');
     });

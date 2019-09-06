@@ -8,14 +8,20 @@ const Word = mongoose.model('vocabulary', vocabSchema);
 
 function addNewWord(req, res) {
     let newWord = new Word(req.body);
-    console.log(req.body);
-
+    //console.log(req.body);
     newWord.save((err, savedWord) => {
         if (err) {
             res.send(err);
         }
-        res.render('newWordResult', savedWord); // as it is, this displays the raw json object on the page
+        res.render('newWordResult', savedWord);
     });
 }
 
-module.exports = addNewWord;
+function findWord(req, res) {
+    let q = req.query.q;
+}
+
+module.exports = {
+    addNewWord,
+    findWord
+};
