@@ -1,16 +1,6 @@
 const { addNewWord, findWord } = require('./dictControllers');
 
-function getTimestamp() {
-    var date = new Date();
-    var d = date.getDate();
-    var m = date.getMonth();
-    var y = date.getFullYear();
-    var h = date.getHours();
-    var min = date.getMinutes();
-    var s = date.getSeconds();
-    var formattedDate = d + "." + m + "." + y + " " + h + ":" + min + ":" + s;
-    return formattedDate;
-}
+const getTimestamp = require('./timestamp');
 
 const routes = (app) => {
     app.use((req, res, next) => {
@@ -25,20 +15,20 @@ const routes = (app) => {
 
     app.route('/searchResult')
     .get((req, res, next) => {
-        //query the database
-        next();
-    }, (req, res, next) => { // diesen Kram mit einer Methode aus dem Controller ersetzen !
-        let word = 'this is a test word';
-        let type = 'this is a test type';
-        let translation = 'this is a test translation';
-        let id = 'this is a test id';
-        res.render('searchResult', {
-            'q' : req.query.q,
-            'word' : word,
-            'type' : type,
-            'translation' : translation,
-            '_id' : id
-        });
+        findWord(req, res);
+    //     next();
+    // }, (req, res, next) => { // diesen Kram mit einer Methode aus dem Controller ersetzen !
+        // let word = 'this is a test word';
+        // let type = 'this is a test type';
+        // let translation = 'this is a test translation';
+        // let id = 'this is a test id';
+        // res.render('searchResult', {
+        //     'q' : req.query.q,
+        //     'word' : word,
+        //     'type' : type,
+        //     'translation' : translation,
+        //     '_id' : id
+        // });
     });
 
     app.route('/newWord')

@@ -3,6 +3,8 @@ const app = express();
 const port = 3001;
 const path = require('path');
 const bodyParser = require('body-parser');
+const getTimestamp = require('./timestamp');
+
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -19,7 +21,7 @@ const routes = require('./dictRoutes');
 mongoose.connect(url, {useNewUrlParser : true});
 db.on('error', console.error.bind(console, 'connection error'));
 db.once('open', function() {
-    console.log('We are connected with mongoose !');
+    console.log('We are connected with mongoose ! ' + getTimestamp());
     console.log('Database name: ' + connected_db);
 });
 

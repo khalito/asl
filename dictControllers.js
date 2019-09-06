@@ -19,6 +19,20 @@ function addNewWord(req, res) {
 
 function findWord(req, res) {
     let q = req.query.q;
+    Word.find( {word : q }, (err, result) => {
+        let word = result[0].word;
+        let type = result[0].type;
+        let translation = result[0].translation;
+        let id = result[0]._id;
+//        console.log(word, type, id);
+        res.render('searchResult', {
+            'q' : q,
+            'word' : word,
+            'type' : type,
+            'translation' : 'translation',
+            '_id' : id
+        });
+    });
 }
 
 module.exports = {
