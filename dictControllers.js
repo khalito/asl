@@ -6,15 +6,29 @@ const vocabSchema = require('./dictModel');
 //new Schema( {word : String} )
 const Word = mongoose.model('vocabulary', vocabSchema);
 
+function mapFormData(i) {
+    let newWord = new Word();
+    newWord.word = i.word;
+    newWord.type = i.type;
+    newWord.translation = i.translation;
+    newWord.verbs.form1.perfect.ana.ar = i.form1_perfect_ana;
+    newWord.verbs.form1.perfect.anta.ar = i.form1_perfect_anta;
+    return newWord;
+}
+
 function addNewWord(req, res) {
-    let newWord = new Word(req.body);
-    //console.log(req.body);
+//    console.log(req.body.form1_perfect_ana);
+    // let newWord = new Word(req.body);
+    let newWord = res.locals.word;
+    // //console.log(req.body);
     newWord.save((err, savedWord) => {
         if (err) {
             res.send(err);
         }
         res.render('newWordResult', savedWord);
+        // res.json(savedWord);
     });
+    // res.render('newWordResult', res.locals.word);
 }
 
 function findWord(req, res) {
@@ -29,13 +43,14 @@ function findWord(req, res) {
             'q' : q,
             'word' : word,
             'type' : type,
-            'translation' : 'translation',
+            'translation' : translation,
             '_id' : id
         });
     });
 }
 
 module.exports = {
+    mapFormData,
     addNewWord,
     findWord
 };
