@@ -1,0 +1,86 @@
+h1 Add a new word
+form(action='newWord' method='post')
+    h2 General information
+    div(class='container' id='generalinfo')
+        div(class='row')
+            div(class='col-xs-3')
+                label(for='word') Word
+            div(class='col-xs-3')
+                input(type='text' class='form-control' name='word' id='word' value='')
+            div(class='col-xs-3')
+                label(for='type') Type
+            div(class='col-xs-3')
+                input(type='text' class='form-control' name='type' id='type' value='')
+            div(class='col-xs-3')
+                label(for='Translation') Translation
+            div(class='col-xs-3')
+                input(type='text' class='form-control' name='translation' id='translation' value='')
+
+    div(class='container' id='verbs')
+        div(class='row' id='form1')
+            div(class='col-sm-4' id='form1_title')
+                h2 Form 1
+            div(class='col-sm-4' id='perfect')
+                h2 Perfect
+                div(class='form-group row' id='single')
+                    div(class='col-sm-3')
+                        label(for='form1_perfect_ana') Ana
+                    div(class='col-sm-9')
+                        input(type='text' class='form-control' readonly name='form1_perfect_ana' id='form1_perfect_ana' value='')
+                //
+                    div
+                        label(for='form1_perfect_anta') Anta
+                        input(type='text' name='form1_perfect_anta' id='form1_perfect_anta' value='')
+                        br
+                    div
+                        label(for='form1_perfect_anti') Anti
+                        input(type='text' name='form1_perfect_anti' id='form1_perfect_anti' value='')
+                        br
+                    div
+                        label(for='form1_perfect_huwa') Huwa
+                        input(type='text' name='form1_perfect_huwa' id='form1_perfect_huwa' value='')
+                        br
+                    div
+                        label(for='form1_perfect_hiya') Hiya
+                        input(type='text' name='form1_perfect_hiya' id='form1_perfect_hiya' value='')
+                        br
+                    
+                    div.dual
+                        div
+                            label(for='form1_perfect_antumaa_male') Antumaa (male)
+                            input(type='text' name='form1_perfect_antumaa_male' id='form1_perfect_antumaa_male' value='')
+                            br
+                        div
+                            label(for='form1_perfect_antumaa_female') Antumaa (female)
+                            input(type='text' name='form1_perfect_antumaa_female' id='form1_perfect_antumaa_female' value='')
+                            br
+                        div
+                            label(for='form1_perfect_humaa_male') Humaa (male)
+                            input(type='text' name='form1_perfect_humaa_male' id='form1_perfect_humaa_male' value='')
+                            br
+                        div
+                            label(for='form1_perfect_humaa_female') Humaa (female)
+                            input(type='text' name='form1_perfect_humaa_female' id='form1_perfect_humaa_female' value='')
+                            br
+                    div.plural
+                    div
+                        label(for='form1_perfect_nahnu') Nahnu
+                        input(type='text' name='form1_perfect_nahnu' id='form1_perfect_nahnu' value='')
+                        br
+                    div
+                        label(for='form1_perfect_antum') Antum
+                        input(type='text' name='form1_perfect_antum' id='form1_perfect_antum' value='')
+                        br
+                    div
+                        label(for='form1_perfect_antunna') Antunna
+                        input(type='text' name='form1_perfect_antunna' id='form1_perfect_antunna' value='')
+                        br
+                    div
+                        label(for='form1_perfect_hum') Hum
+                        input(type='text' name='form1_perfect_hum' id='form1_perfect_hum' value='')
+                        br
+                    div
+                        label(for='form1_perfect_hunna') Hunna
+                        input(type='text' name='form1_perfect_hunna' id='form1_perfect_hunna' value='')
+                        br
+    input(type='submit' name='addNewWord' id='addNewWord' value='Add a new word')
