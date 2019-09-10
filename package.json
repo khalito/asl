@@ -4,22 +4,22 @@
   "description": "dictionary app",
   "main": "app.js",
   "dependencies": {
-    "assert": "^2.0.0",
     "body-parser": "^1.19.0",
     "bson": "^4.0.2",
     "bson-ext": "^2.0.2",
     "ejs": "^2.6.2",
     "express": "^4.17.1",
-    "jshint": "^2.10.2",
     "mongod": "^2.0.0",
     "mongodb": "^3.3.0",
     "mongodb-core": "^3.2.7",
     "mongoose": "^5.6.11",
-    "node-gyp": "^5.0.3",
+    "pug": "^2.0.4",
     "supervisor": "^0.12.0"
   },
   "devDependencies": {
-    "eslint": "^6.2.2"
+    "eslint": "^6.2.2",
+    "jshint": "^2.10.2",
+    "node-gyp": "^5.0.3"
   },
   "scripts": {
     "start": "supervisor app.js"

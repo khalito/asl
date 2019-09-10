@@ -44,7 +44,16 @@ function findWord(req, res) {
             'word' : word,
             'type' : type,
             'translation' : translation,
-            '_id' : id
+            '_id' : id,
+            verbs : {
+                form1 : {
+                    perfect : {
+                        ana : {
+                            ar : 'I so so so '
+                        }
+                    }
+                }
+            }
         });
     });
 }
