@@ -10,7 +10,15 @@ const routes = (app) => {
 
     app.route('/')
     .get((req, res, next) => {
-        res.render('index');
+        res.render('index', {
+            verbs : {
+                form1 : {
+                    perfect : {
+
+                    }
+                }
+            }
+        });
     });
 
     app.route('/searchResult')

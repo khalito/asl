@@ -48,9 +48,8 @@ function findWord(req, res) {
             verbs : {
                 form1 : {
                     perfect : {
-                        ana : {
-                            ar : 'I so so so '
-                        }
+                        ana : 'I so so so',
+                        anta : 'You so so so'
                     }
                 }
             }

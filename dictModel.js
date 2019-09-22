@@ -9,120 +9,36 @@ const vocabSchema = new Schema({
     	verbs: {
     		form1: {
     			perfect: {
-    				ana: {
-    					ar: String,
-    					en: String
-    					},
-    				anta: {
-    					ar: String,
-    					en: String
-    					},
-    				anti: {
-    					ar: String,
-    					en: String
-    					},
-    				huwa: {
-    					ar: String,
-    					en: String
-    					},
-    				heeya: {
-    					ar: String,
-    					en: String
-    					},
-    				antumaa_male: {
-    					ar: String,
-    					en: String
-    					},
-    				antumaa_female: {
-    					ar: String,
-    					en: String
-    					},
-    				humaa_male: {
-    					ar: String,
-    					en: String
-    					},
-    				humaa_female: {
-    					ar: String,
-    					en: String
-    					},
-    				nahnu: {
-    					ar: String,
-    					en: String
-    					},
-    				antum: {
-    					ar: String,
-    					en: String
-    					},
-    				antunna: {
-    					ar: String,
-    					en: String
-    					},
-    				hum: {
-    					ar: String,
-    					en: String
-    					},
-    				hunna:{
-    					ar: String,
-    					en: String
-    					}
+    				ana: String,
+    				anta: String,
+    				anti: String,
+    				huwa: String,
+    				hiya: String,
+    				antuma_male: String,
+    				antuma_female: String,
+    				huma_male: String,
+    				huma_female: String,
+    				nahnu: String,
+    				antum: String,
+    				antunna: String,
+    				hum: String,
+    				hunna: String
     				},
     			imperfect: {
-    				ana: {
-    					ar: String,
-    					en: String
-    					},
-    				anta: {
-    					ar: String,
-    					en: String
-    					},
-    				anti: {
-    					ar: String,
-    					en: String
-    					},
-    				huwa: {
-    					ar: String,
-    					en: String
-    					},
-    				heeya: {
-    					ar: String,
-    					en: String
-    					},
-    				antumaa_male: {
-    					ar: String,
-    					en: String
-    					},
-    				antumaa_female: {
-    					ar: String,
-    					en: String
-    					},
-    				humaa_male: {
-    					ar: String,
-    					en: String
-    					},
-    				humaa_female: {
-    					ar: String,
-    					en: String
-    					},
-    				nahnu: {
-    					ar: String,
-    					en: String
-    					},
-    				antum: {
-    					ar: String,
-    					en: String
-    					},
-    				antunna: {
-    					ar: String,
-    					en: String
-    					},
-    				hum: {
-    					ar: String,
-    					en: String
-    					},
-    				hunna:{
-    					ar: String,
-    					en: String
-    					}
+    				ana: String,
+    				anta: String,
+    				anti: String,
+    				huwa: String,
+    				hiya: String,
+    				antuma_male: String,
+    				antuma_female: String,
+    				huma_male: String,
+    				huma_female: String,
+    				nahnu: String,
+    				antum: String,
+    				antunna: String,
+    				hum: String,
+    				hunna:String
     				},
     			nouns: [
     				{
@@ -130,16 +46,16 @@ const vocabSchema = new Schema({
     					plural: String,
     					translation: String
     				}
-    				]
-    			}
-    		},
+    			]
+    		}
+    	},
     	otherNouns: Array,
     	adverbs: [
     		{
     		  word: String,
     		  translation: String
     		}
-    		]
+    	]
     }
 
 );
