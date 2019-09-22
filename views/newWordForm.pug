@@ -1,81 +1,117 @@
 h1 Add a new word
 form(action='newWord' method='post')
-    h2 General information
-    div.generalinfo
+    div.generalInfo_title General information
+    div.generalInfo
         div
-            label(for='word') Word
-            input(type='text' class='form-control' name='word' id='word' value='')
+            div.pronoun
+                label(for='word') Word
+                input(type='text' class='form-control' name='word' id='word' value='')
+            div.pronoun
+                label(for='type') Type
+                input(type='text' class='form-control' name='type' id='type' value='')
+            div.pronoun
+                label(for='Translation') Translation
+                input(type='text' class='form-control' name='translation' id='translation' value='')
         div
-            label(for='type') Type
-            input(type='text' class='form-control' name='type' id='type' value='')
-        div
-            label(for='Translation') Translation
-            input(type='text' class='form-control' name='translation' id='translation' value='')
     div.verbs
         div.form1
-            div.form1_title
-                h2 Form 1
-            div.perfect
-                div.perfect_title
-                    h2 Perfect
-                div.single
-                    div
+            div.form_title Form 1
+            div.tempus
+                div.tempus_title Perfect
+                div.numerus
+                    div.pronoun
                         label(for='form1_perfect_ana') Ana
-                        input(type='text' readonly name='form1_perfect_ana' id='form1_perfect_ana' value='')
-                        br
-                    div
+                        input(type='text' name='form1_perfect_ana' id='form1_perfect_ana' value='')
+                    div.pronoun
                         label(for='form1_perfect_anta') Anta
                         input(type='text' name='form1_perfect_anta' id='form1_perfect_anta' value='')
-                        br
-                    div
+                    div.pronoun
                         label(for='form1_perfect_anti') Anti
                         input(type='text' name='form1_perfect_anti' id='form1_perfect_anti' value='')
-                        br
-                    div
+                    div.pronoun
                         label(for='form1_perfect_huwa') Huwa
                         input(type='text' name='form1_perfect_huwa' id='form1_perfect_huwa' value='')
-                        br
-                    div
+                    div.pronoun
                         label(for='form1_perfect_hiya') Hiya
                         input(type='text' name='form1_perfect_hiya' id='form1_perfect_hiya' value='')
-                        br
                     
-                div.dual
-                    div
+                div.numerus
+                    div.pronoun
                         label(for='form1_perfect_antumaa_male') Antumaa (male)
                         input(type='text' name='form1_perfect_antumaa_male' id='form1_perfect_antumaa_male' value='')
-                        br
-                    div
+                    div.pronoun
                         label(for='form1_perfect_antumaa_female') Antumaa (female)
                         input(type='text' name='form1_perfect_antumaa_female' id='form1_perfect_antumaa_female' value='')
-                        br
-                    div
+                    div.pronoun
                         label(for='form1_perfect_humaa_male') Humaa (male)
                         input(type='text' name='form1_perfect_humaa_male' id='form1_perfect_humaa_male' value='')
-                        br
-                    div
+                    div.pronoun
                         label(for='form1_perfect_humaa_female') Humaa (female)
                         input(type='text' name='form1_perfect_humaa_female' id='form1_perfect_humaa_female' value='')
-                        br
-                div.plural
-                    div
+                
+                div.numerus
+                    div.pronoun
                         label(for='form1_perfect_nahnu') Nahnu
                         input(type='text' name='form1_perfect_nahnu' id='form1_perfect_nahnu' value='')
-                        br
-                    div
+                    div.pronoun
                         label(for='form1_perfect_antum') Antum
                         input(type='text' name='form1_perfect_antum' id='form1_perfect_antum' value='')
-                        br
-                    div
+                    div.pronoun
                         label(for='form1_perfect_antunna') Antunna
                         input(type='text' name='form1_perfect_antunna' id='form1_perfect_antunna' value='')
-                        br
-                    div
+                    div.pronoun
                         label(for='form1_perfect_hum') Hum
                         input(type='text' name='form1_perfect_hum' id='form1_perfect_hum' value='')
-                        br
-                    div
+                    div.pronoun
                         label(for='form1_perfect_hunna') Hunna
                         input(type='text' name='form1_perfect_hunna' id='form1_perfect_hunna' value='')
-                        br
+            div.tempus
+                div.tempus_title Imperfect
+                div.numerus
+                    div.pronoun
+                        label(for='form1_imperfect_ana') Ana
+                        input(type='text' name='form1_imperfect_ana' id='form1_imperfect_ana' value='')
+                    div.pronoun
+                        label(for='form1_imperfect_anta') Anta
+                        input(type='text' name='form1_imperfect_anta' id='form1_imperfect_anta' value='')
+                    div.pronoun
+                        label(for='form1_imperfect_anti') Anti
+                        input(type='text' name='form1_imperfect_anti' id='form1_imperfect_anti' value='')
+                    div.pronoun
+                        label(for='form1_imperfect_huwa') Huwa
+                        input(type='text' name='form1_imperfect_huwa' id='form1_imperfect_huwa' value='')
+                    div.pronoun
+                        label(for='form1_imperfect_hiya') Hiya
+                        input(type='text' name='form1_imperfect_hiya' id='form1_imperfect_hiya' value='')
+                
+                div.numerus
+                    div.pronoun
+                        label(for='form1_imperfect_antumaa_male') Antumaa (male)
+                        input(type='text' name='form1_imperfect_antumaa_male' id='form1_imperfect_antumaa_male' value='')
+                    div.pronoun
+                        label(for='form1_imperfect_antumaa_female') Antumaa (female)
+                        input(type='text' name='form1_imperfect_antumaa_female' id='form1_imperfect_antumaa_female' value='')
+                    div.pronoun
+                        label(for='form1_imperfect_humaa_male') Humaa (male)
+                        input(type='text' name='form1_imperfect_humaa_male' id='form1_imperfect_humaa_male' value='')
+                    div.pronoun
+                        label(for='form1_imperfect_humaa_female') Humaa (female)
+                        input(type='text' name='form1_imperfect_humaa_female' id='form1_imperfect_humaa_female' value='')
+                
+                div.numerus
+                    div.pronoun
+                        label(for='form1_imperfect_nahnu') Nahnu
+                        input(type='text' name='form1_imperfect_nahnu' id='form1_imperfect_nahnu' value='')
+                    div.pronoun
+                        label(for='form1_imperfect_antum') Antum
+                        input(type='text' name='form1_imperfect_antum' id='form1_imperfect_antum' value='')
+                    div.pronoun
+                        label(for='form1_imperfect_antunna') Antunna
+                        input(type='text' name='form1_imperfect_antunna' id='form1_imperfect_antunna' value='')
+                    div.pronoun
+                        label(for='form1_imperfect_hum') Hum
+                        input(type='text' name='form1_imperfect_hum' id='form1_imperfect_hum' value='')
+                    div.pronoun
+                        label(for='form1_imperfect_hunna') Hunna
+                        input(type='text' name='form1_imperfect_hunna' id='form1_imperfect_hunna' value='')
     input(type='submit' name='addNewWord' id='addNewWord' value='Add a new word')
