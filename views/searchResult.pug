@@ -1,0 +1,16 @@
+doctype html
+html
+head
+    title Search result
+    link(rel='stylesheet' type='text/css' href='styles.css')
+body
+    h1 You searched for "#{q}"
+    br
+    
+    div These are your results :
+    br
+    
+    include wordDetails.pug
+    br
+    
+    a(href='/') Back to search
