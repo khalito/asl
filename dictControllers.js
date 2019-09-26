@@ -6,6 +6,19 @@ const vocabSchema = require('./dictModel');
 //new Schema( {word : String} )
 const Word = mongoose.model('vocabulary', vocabSchema);
 
+function renderIndex(req, res) {
+    res.render('index', {
+        verbs : {
+            form1 : {
+                perfect : {
+                },
+                imperfect : {
+                }
+            }
+        }
+    });
+}
+
 function mapFormData(i) {
     let newWord = new Word();
     newWord.word = i.word;
@@ -88,6 +101,7 @@ function findWord(req, res) {
 }
 
 module.exports = {
+    renderIndex,
     mapFormData,
     addNewWord,
     findWord
