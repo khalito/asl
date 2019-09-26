@@ -11,8 +11,34 @@ function mapFormData(i) {
     newWord.word = i.word;
     newWord.type = i.type;
     newWord.translation = i.translation;
-    newWord.verbs.form1.perfect.ana.ar = i.form1_perfect_ana;
-    newWord.verbs.form1.perfect.anta.ar = i.form1_perfect_anta;
+    newWord.verbs.form1.perfect.ana = i.form1_perfect_ana;
+    newWord.verbs.form1.perfect.anta = i.form1_perfect_anta;
+    newWord.verbs.form1.perfect.anti = i.form1_perfect_anti;
+    newWord.verbs.form1.perfect.huwa = i.form1_perfect_huwa;
+    newWord.verbs.form1.perfect.hiya = i.form1_perfect_hiya;
+    newWord.verbs.form1.perfect.antuma_male = i.form1_perfect_antuma_male;
+    newWord.verbs.form1.perfect.antuma_female = i.form1_perfect_antuma_female;
+    newWord.verbs.form1.perfect.huma_male = i.form1_perfect_huma_male;
+    newWord.verbs.form1.perfect.huma_female = i.form1_perfect_huma_female;
+    newWord.verbs.form1.perfect.nahnu = i.form1_perfect_nahnu;
+    newWord.verbs.form1.perfect.antum = i.form1_perfect_antum;
+    newWord.verbs.form1.perfect.antunna = i.form1_perfect_antunna;
+    newWord.verbs.form1.perfect.hum = i.form1_perfect_hum;
+    newWord.verbs.form1.perfect.hunna = i.form1_perfect_hunna;
+    newWord.verbs.form1.imperfect.ana = i.form1_imperfect_ana;
+    newWord.verbs.form1.imperfect.anta = i.form1_imperfect_anta;
+    newWord.verbs.form1.imperfect.anti = i.form1_imperfect_anti;
+    newWord.verbs.form1.imperfect.huwa = i.form1_imperfect_huwa;
+    newWord.verbs.form1.imperfect.hiya = i.form1_imperfect_hiya;
+    newWord.verbs.form1.imperfect.antuma_male = i.form1_imperfect_antuma_male;
+    newWord.verbs.form1.imperfect.antuma_female = i.form1_imperfect_antuma_female;
+    newWord.verbs.form1.imperfect.huma_male = i.form1_imperfect_huma_male;
+    newWord.verbs.form1.imperfect.huma_female = i.form1_imperfect_huma_female;
+    newWord.verbs.form1.imperfect.nahnu = i.form1_imperfect_nahnu;
+    newWord.verbs.form1.imperfect.antum = i.form1_imperfect_antum;
+    newWord.verbs.form1.imperfect.antunna = i.form1_imperfect_antunna;
+    newWord.verbs.form1.imperfect.hum = i.form1_imperfect_hum;
+    newWord.verbs.form1.imperfect.hunna = i.form1_imperfect_hunna;
     return newWord;
 }
 
