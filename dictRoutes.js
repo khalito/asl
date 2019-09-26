@@ -14,7 +14,8 @@ const routes = (app) => {
             verbs : {
                 form1 : {
                     perfect : {
-
+                    },
+                    imperfect : {
                     }
                 }
             }

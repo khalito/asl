@@ -64,6 +64,8 @@ function findWord(req, res) {
         let type = result[0].type;
         let translation = result[0].translation;
         let id = result[0]._id;
+        let form1_perfect_ana = result[0].verbs.form1.perfect.ana;
+        let form1_perfect_anta = result[0].verbs.form1.perfect.anta;
 //        console.log(word, type, id);
         res.render('searchResult', {
             'q' : q,
@@ -74,8 +76,10 @@ function findWord(req, res) {
             verbs : {
                 form1 : {
                     perfect : {
-                        ana : 'I so so so',
-                        anta : 'You so so so'
+                        ana : form1_perfect_ana
+                    },
+                    imperfect : {
+                        ana : form1_perfect_anta
                     }
                 }
             }
