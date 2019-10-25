@@ -70,33 +70,41 @@ function addNewWord(req, res) {
     // res.render('newWordResult', res.locals.word);
 }
 
-function findWord(req, res) {
+function wordIsDB(req, res) {
+
+}
+
+function findWord(req, res, next) {
     let q = req.query.q;
     Word.find( {word : q }, (err, result) => {
-        let word = result[0].word;
-        let type = result[0].type;
-        let translation = result[0].translation;
-        let id = result[0]._id;
-        let form1_perfect_ana = result[0].verbs.form1.perfect.ana;
-        let form1_perfect_anta = result[0].verbs.form1.perfect.anta;
-//        console.log(word, type, id);
-        res.render('searchResult', {
-            'q' : q,
-            'word' : word,
-            'type' : type,
-            'translation' : translation,
-            '_id' : id,
-            verbs : {
-                form1 : {
-                    perfect : {
-                        ana : form1_perfect_ana
-                    },
-                    imperfect : {
-                        ana : form1_perfect_anta
+        if(result) {
+            res.render('wordNotFound', { 'q' : q });
+        } else {
+            let word = result[0].word;
+            let type = result[0].type;
+            let translation = result[0].translation;
+            let id = result[0]._id;
+            let form1_perfect_ana = result[0].verbs.form1.perfect.ana;
+            let form1_perfect_anta = result[0].verbs.form1.perfect.anta;
+    //        console.log(word, type, id);
+            res.render('searchResult', {
+                'q' : q,
+                'word' : word,
+                'type' : type,
+                'translation' : translation,
+                '_id' : id,
+                verbs : {
+                    form1 : {
+                        perfect : {
+                            ana : form1_perfect_ana
+                        },
+                        imperfect : {
+                            ana : form1_perfect_anta
+                        }
                     }
                 }
-            }
-        });
+            });
+        }
     });
 }
 
