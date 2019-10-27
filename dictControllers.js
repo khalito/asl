@@ -2,12 +2,19 @@ const mongoose = require('mongoose');
 
 const vocabSchema = require('./dictModel');
 
-//const Schema = mongoose.Schema;
-//new Schema( {word : String} )
 const Word = mongoose.model('vocabulary', vocabSchema);
+
+
+function countAllWords() {
+    Word.estimatedDocumentCount({}, (err, result) => {
+        return result;
+    });
+}
+
 
 function renderIndex(req, res) {
     res.render('index', {
+        'countOfWords' : res.locals.countOfWords,
         verbs : {
             form1 : {
                 perfect : {
@@ -60,26 +67,33 @@ function addNewWord(req, res) {
     // let newWord = new Word(req.body);
     let newWord = res.locals.word;
     // //console.log(req.body);
-    newWord.save((err, savedWord) => {
-        if (err) {
-            res.send(err);
+    let q = newWord.word;
+    Word.exists( { word : q }, (err, result) => {
+        if(result == true) {
+            console.log('The word is already in the dictionary');
+            res.render('wordAlreadyExists', { 'q' : q });
+        } else {
+            newWord.save((err, savedWord) => {
+                if (err) {
+                    res.send(err);
+                }
+                console.log('Word saved to dictionary');
+                res.render('newWordResult', savedWord);
+                // res.json(savedWord);
+            });
+            // res.render('newWordResult', res.locals.word);
         }
-        res.render('newWordResult', savedWord);
-        // res.json(savedWord);
     });
-    // res.render('newWordResult', res.locals.word);
-}
-
-function wordIsDB(req, res) {
-
 }
 
 function findWord(req, res, next) {
     let q = req.query.q;
-    Word.find( {word : q }, (err, result) => {
-        if(result) {
+    Word.find( { word : q }, (err, result) => {
+        if(result == false) {
+            console.log('Word not found in dictionary');
             res.render('wordNotFound', { 'q' : q });
         } else {
+            console.log('Word found in dictionary');
             let word = result[0].word;
             let type = result[0].type;
             let translation = result[0].translation;
@@ -109,6 +123,7 @@ function findWord(req, res, next) {
 }
 
 module.exports = {
+    countAllWords,
     renderIndex,
     mapFormData,
     addNewWord,
