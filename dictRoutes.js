@@ -1,5 +1,4 @@
 const {
-    countAllWords,
     renderIndex,
     mapFormData,
     addNewWord,
@@ -14,13 +13,7 @@ const routes = (app) => {
     });
 
     app.route('/')
-    .get(
-        (req, res, next) => {
-            res.locals.countOfWords = countAllWords();
-            console.log('Number of documents : ' + res.locals.countOfWords);
-            next();
-        },
-        (req, res, next) => {
+    .get((req, res, next) => {
             renderIndex(req, res);
         }
     );

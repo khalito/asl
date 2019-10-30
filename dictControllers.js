@@ -1,20 +1,16 @@
+/*jshint esversion: 8 */
+
 const mongoose = require('mongoose');
 
 const vocabSchema = require('./dictModel');
 
 const Word = mongoose.model('vocabulary', vocabSchema);
 
+async function renderIndex(req, res) {
+    countOfWords = await Word.estimatedDocumentCount();
 
-function countAllWords() {
-    Word.estimatedDocumentCount({}, (err, result) => {
-        return result;
-    });
-}
-
-
-function renderIndex(req, res) {
     res.render('index', {
-        'countOfWords' : res.locals.countOfWords,
+        'countOfWords' : countOfWords,
         verbs : {
             form1 : {
                 perfect : {
@@ -123,7 +119,6 @@ function findWord(req, res, next) {
 }
 
 module.exports = {
-    countAllWords,
     renderIndex,
     mapFormData,
     addNewWord,
