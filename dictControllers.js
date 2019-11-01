@@ -24,6 +24,7 @@ async function renderIndex(req, res) {
 
 function mapFormData(i) {
     let newWord = new Word();
+    newWord.id = i.id;
     newWord.word = i.word;
     newWord.type = i.type;
     newWord.translation = i.translation;
@@ -86,7 +87,7 @@ function findWord(req, res, next) {
     let q = req.query.q;
     Word.find( { word : q }, (err, result) => {
         if(result == false) {
-            console.log('Word not found in dictionary');
+            console.log('Word NOT found in dictionary');
             res.render('wordNotFound', { 'q' : q });
         } else {
             console.log('Word found in dictionary');
@@ -102,7 +103,7 @@ function findWord(req, res, next) {
                 'word' : word,
                 'type' : type,
                 'translation' : translation,
-                '_id' : id,
+                'id' : id,
                 verbs : {
                     form1 : {
                         perfect : {
@@ -118,9 +119,28 @@ function findWord(req, res, next) {
     });
 }
 
+
+// Update is not recommended. Better use SAVE
+function renderEditWord(req, res) {
+    let word = res.locals.word;
+    console.log('Edited word ID : ' + word.id);
+    word.toObject();
+    Word.update({ _id : word.id }, word, (err, updatedWord) => {
+        if (err) {
+            res.send(err);
+        } else {
+            console.log('Word updated');
+            //res.render('newWordResult', savedWord);
+            res.send(updatedWord);
+            console.log(updatedWord._id);
+        }
+    });
+}
+
 module.exports = {
     renderIndex,
     mapFormData,
     addNewWord,
-    findWord
+    findWord,
+    renderEditWord
 };

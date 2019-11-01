@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const vocabSchema = new Schema({
+        id: String,
     	word: String,
     	type: String,
     	translation: String,
@@ -59,5 +60,12 @@ const vocabSchema = new Schema({
     }
 
 );
+
+vocabSchema.options.toObject = {};
+vocabSchema.options.toObject.transform = function (doc, ret, options) {
+  // remove the _id of every document before returning the result
+  delete ret._id;
+  return ret;
+};
 
 module.exports = vocabSchema;

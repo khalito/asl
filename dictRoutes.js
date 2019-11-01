@@ -2,7 +2,8 @@ const {
     renderIndex,
     mapFormData,
     addNewWord,
-    findWord } = require('./dictControllers');
+    findWord,
+    renderEditWord } = require('./dictControllers');
 
 const getTimestamp = require('./timestamp');
 
@@ -35,6 +36,17 @@ const routes = (app) => {
         },
         (req, res, next) => {
             addNewWord(req, res);
+        }
+    );
+
+    app.route('/editWord')
+    .post(
+        (req, res, next) => {
+            res.locals.word = mapFormData(req.body);
+            next();
+        },
+        (req, res, next) => {
+            renderEditWord(req, res);
         }
     );
 };

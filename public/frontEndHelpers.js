@@ -7,15 +7,21 @@ function togglePronounStatus() {
             $( this ).prop('disabled', true);
             console.log('changed status to disabled');
         }
+        if( $( '#togglePronounStatusButton' ).length == true) {
+            $( '#togglePronounStatusButton' ).toggle();
+            $( '#editWordFormButton' ).toggle();
+        }
     });
 }
 
+
 // new method to add new words (display hidden form, enable form fields)
-function showNewWordForm() {
-    if( $( 'div.hidden' ).attr('display') != 'none') {
-        $( '#newWordFormToggle' ).html('Hide new word form');
+function toggleNewWordForm() {
+    if( $( 'div.newWordForm' ).css('display') == 'none') {
+        $( '#newWordFormToggleButton' ).html( 'Hide new word form');
     } else {
-        $( '#newWordFormToggle' ).html('Add a new word');
+        $( '#newWordFormToggleButton' ).html('Add a new word');
     }
-    $( 'div.hidden' ).toggle();
+    togglePronounStatus();
+    $( 'div.newWordForm' ).toggle();
 }

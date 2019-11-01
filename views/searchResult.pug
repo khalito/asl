@@ -8,16 +8,18 @@ body
     a(href='/') Back to search
     br
     
-    h1 You searched for "#{q}"
+    h1 You searched for "#{q}" (ID : #{id})
     br
     
     div These are your results :
     br
     
-    button(type='button' name='name' value='value' onclick='togglePronounStatus();') Toggle read/edit mode
-    br
-    
-    include wordDetails.pug
-    br
+    button(type='button' id='togglePronounStatusButton' name='name' value='value' onclick='togglePronounStatus();') Edit this word
+    br    
+
+    form(action='editWord' method='post')
+        include wordDetails.pug
+        input(type='text' name='id' value=id hidden)
+        input(type='submit' id='editWordFormButton' value='Submit your edits' hidden)
     
     script(src="frontEndHelpers.js")
