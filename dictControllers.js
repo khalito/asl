@@ -67,7 +67,7 @@ function addNewWord(req, res) {
     Word.exists( { word : q }, (err, result) => {
         if(result == true) {
             console.log('The word is already in the dictionary');
-            res.render('wordAlreadyExists', { 'q' : q });
+            res.render('wordAlreadyExistsResult', { 'q' : q });
         } else {
             newWord.save((err, savedWord) => {
                 if (err) {

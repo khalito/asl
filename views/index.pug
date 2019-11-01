@@ -3,9 +3,17 @@ html
 head
     title Dictionary
     link(rel='stylesheet' type='text/css' href='styles.css')
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
 body
     div There are #{countOfWords} words in the dictionary.
     br
     
     include searchForm.pug
+    br
+    
+    button(type='button' id='newWordFormToggle' onclick='showNewWordForm();') Add a new word
+    br
+    
     include newWordForm.pug
+
+    script(src="frontEndHelpers.js")

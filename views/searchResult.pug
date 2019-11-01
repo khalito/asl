@@ -3,14 +3,21 @@ html
 head
     title Search result
     link(rel='stylesheet' type='text/css' href='styles.css')
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
 body
+    a(href='/') Back to search
+    br
+    
     h1 You searched for "#{q}"
     br
     
     div These are your results :
     br
     
+    button(type='button' name='name' value='value' onclick='togglePronounStatus();') Toggle read/edit mode
+    br
+    
     include wordDetails.pug
     br
     
-    a(href='/') Back to search
+    script(src="frontEndHelpers.js")

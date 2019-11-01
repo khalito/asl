@@ -1,4 +1,6 @@
-h1 Add a new word
-form(action='newWord' method='post')
-    include wordDetails.pug
-    input(type='submit' name='addNewWord' id='addNewWord' value='Add a new word')
+div.hidden
+    h1 Add a new word
+
+    form(action='newWord' method='post')
+        include wordDetails.pug
+        input(type='submit' name='addNewWord' id='addNewWord' value='Add a new word')

@@ -1,0 +1,19 @@
+doctype html
+html
+head
+    title Search result
+    link(rel='stylesheet' type='text/css' href='styles.css')
+body
+    a(href='/') Back to search
+    br
+    
+    h1 You wanted to add "#{q}"
+    br
+    
+    div But the word already exists !
+    br
+    form(action="/searchResult" method="get")
+        div.searchForm
+            input(type="text" name='q' value=q hidden)
+            input(type="submit" value="Show it to me!" autofocus)
+            br
