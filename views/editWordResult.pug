@@ -1,0 +1,22 @@
+doctype html
+html
+head
+    title Edit result
+    link(rel='stylesheet' type='text/css' href='styles.css')
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+body
+    a(href='/') Back to search
+    br
+    
+    h1 You have updated "#{word}" (ID : #{_id})
+    br
+    
+    button(type='button' id='togglePronounStatusButton' name='name' value='value' onclick='togglePronounStatus();') Edit this word
+    br    
+
+    form(action='editWord' method='post')
+        include wordDetails.pug
+        input(type='text' name='id' value=id hidden)
+        input(type='submit' id='editWordFormButton' value='Submit your edits' hidden)
+    
+    script(src="frontEndHelpers.js")

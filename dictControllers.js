@@ -7,7 +7,7 @@ const vocabSchema = require('./dictModel');
 const Word = mongoose.model('vocabulary', vocabSchema);
 
 async function renderIndex(req, res) {
-    countOfWords = await Word.estimatedDocumentCount();
+    let countOfWords = await Word.estimatedDocumentCount();
 
     res.render('index', {
         'countOfWords' : countOfWords,
@@ -22,53 +22,101 @@ async function renderIndex(req, res) {
     });
 }
 
-function mapFormData(i) {
+function createNewWordWithFormData(formData) {
     let newWord = new Word();
-    newWord.id = i.id;
-    newWord.word = i.word;
-    newWord.type = i.type;
-    newWord.translation = i.translation;
-    newWord.verbs.form1.perfect.ana = i.form1_perfect_ana;
-    newWord.verbs.form1.perfect.anta = i.form1_perfect_anta;
-    newWord.verbs.form1.perfect.anti = i.form1_perfect_anti;
-    newWord.verbs.form1.perfect.huwa = i.form1_perfect_huwa;
-    newWord.verbs.form1.perfect.hiya = i.form1_perfect_hiya;
-    newWord.verbs.form1.perfect.antuma_male = i.form1_perfect_antuma_male;
-    newWord.verbs.form1.perfect.antuma_female = i.form1_perfect_antuma_female;
-    newWord.verbs.form1.perfect.huma_male = i.form1_perfect_huma_male;
-    newWord.verbs.form1.perfect.huma_female = i.form1_perfect_huma_female;
-    newWord.verbs.form1.perfect.nahnu = i.form1_perfect_nahnu;
-    newWord.verbs.form1.perfect.antum = i.form1_perfect_antum;
-    newWord.verbs.form1.perfect.antunna = i.form1_perfect_antunna;
-    newWord.verbs.form1.perfect.hum = i.form1_perfect_hum;
-    newWord.verbs.form1.perfect.hunna = i.form1_perfect_hunna;
-    newWord.verbs.form1.imperfect.ana = i.form1_imperfect_ana;
-    newWord.verbs.form1.imperfect.anta = i.form1_imperfect_anta;
-    newWord.verbs.form1.imperfect.anti = i.form1_imperfect_anti;
-    newWord.verbs.form1.imperfect.huwa = i.form1_imperfect_huwa;
-    newWord.verbs.form1.imperfect.hiya = i.form1_imperfect_hiya;
-    newWord.verbs.form1.imperfect.antuma_male = i.form1_imperfect_antuma_male;
-    newWord.verbs.form1.imperfect.antuma_female = i.form1_imperfect_antuma_female;
-    newWord.verbs.form1.imperfect.huma_male = i.form1_imperfect_huma_male;
-    newWord.verbs.form1.imperfect.huma_female = i.form1_imperfect_huma_female;
-    newWord.verbs.form1.imperfect.nahnu = i.form1_imperfect_nahnu;
-    newWord.verbs.form1.imperfect.antum = i.form1_imperfect_antum;
-    newWord.verbs.form1.imperfect.antunna = i.form1_imperfect_antunna;
-    newWord.verbs.form1.imperfect.hum = i.form1_imperfect_hum;
-    newWord.verbs.form1.imperfect.hunna = i.form1_imperfect_hunna;
-    return newWord;
+    console.log('newWord created = ' + newWord);
+    let result = mapFormData(newWord, formData);
+    return result;
+}
+
+function updateWordPropertiesWithFormData(formData) {
+    let result = mapFormData2(formData);
+    return result;
+}
+
+function mapFormData2(formData) {
+    let word = {};
+    word.id = formData.id;
+    word.word = formData.word;
+    word.type = formData.type;
+    word.translation = formData.translation;
+    word.verbs = {};
+    word.verbs.form1 = {};
+    word.verbs.form1.perfect = {};
+    word.verbs.form1.perfect.ana = formData.form1_perfect_ana;
+    word.verbs.form1.perfect.anta = formData.form1_perfect_anta;
+    word.verbs.form1.perfect.anti = formData.form1_perfect_anti;
+    word.verbs.form1.perfect.huwa = formData.form1_perfect_huwa;
+    word.verbs.form1.perfect.hiya = formData.form1_perfect_hiya;
+    word.verbs.form1.perfect.antuma_male = formData.form1_perfect_antuma_male;
+    word.verbs.form1.perfect.antuma_female = formData.form1_perfect_antuma_female;
+    word.verbs.form1.perfect.huma_male = formData.form1_perfect_huma_male;
+    word.verbs.form1.perfect.huma_female = formData.form1_perfect_huma_female;
+    word.verbs.form1.perfect.nahnu = formData.form1_perfect_nahnu;
+    word.verbs.form1.perfect.antum = formData.form1_perfect_antum;
+    word.verbs.form1.perfect.antunna = formData.form1_perfect_antunna;
+    word.verbs.form1.perfect.hum = formData.form1_perfect_hum;
+    word.verbs.form1.perfect.hunna = formData.form1_perfect_hunna;
+    word.verbs.form1.imperfect = {};
+    word.verbs.form1.imperfect.ana = formData.form1_imperfect_ana;
+    word.verbs.form1.imperfect.anta = formData.form1_imperfect_anta;
+    word.verbs.form1.imperfect.anti = formData.form1_imperfect_anti;
+    word.verbs.form1.imperfect.huwa = formData.form1_imperfect_huwa;
+    word.verbs.form1.imperfect.hiya = formData.form1_imperfect_hiya;
+    word.verbs.form1.imperfect.antuma_male = formData.form1_imperfect_antuma_male;
+    word.verbs.form1.imperfect.antuma_female = formData.form1_imperfect_antuma_female;
+    word.verbs.form1.imperfect.huma_male = formData.form1_imperfect_huma_male;
+    word.verbs.form1.imperfect.huma_female = formData.form1_imperfect_huma_female;
+    word.verbs.form1.imperfect.nahnu = formData.form1_imperfect_nahnu;
+    word.verbs.form1.imperfect.antum = formData.form1_imperfect_antum;
+    word.verbs.form1.imperfect.antunna = formData.form1_imperfect_antunna;
+    word.verbs.form1.imperfect.hum = formData.form1_imperfect_hum;
+    word.verbs.form1.imperfect.hunna = formData.form1_imperfect_hunna;
+    return word;
+}
+
+function mapFormData(word, formData) {
+    word.id = formData.id;
+    word.word = formData.word;
+    word.type = formData.type;
+    word.translation = formData.translation;
+    word.verbs.form1.perfect.ana = formData.form1_perfect_ana;
+    word.verbs.form1.perfect.anta = formData.form1_perfect_anta;
+    word.verbs.form1.perfect.anti = formData.form1_perfect_anti;
+    word.verbs.form1.perfect.huwa = formData.form1_perfect_huwa;
+    word.verbs.form1.perfect.hiya = formData.form1_perfect_hiya;
+    word.verbs.form1.perfect.antuma_male = formData.form1_perfect_antuma_male;
+    word.verbs.form1.perfect.antuma_female = formData.form1_perfect_antuma_female;
+    word.verbs.form1.perfect.huma_male = formData.form1_perfect_huma_male;
+    word.verbs.form1.perfect.huma_female = formData.form1_perfect_huma_female;
+    word.verbs.form1.perfect.nahnu = formData.form1_perfect_nahnu;
+    word.verbs.form1.perfect.antum = formData.form1_perfect_antum;
+    word.verbs.form1.perfect.antunna = formData.form1_perfect_antunna;
+    word.verbs.form1.perfect.hum = formData.form1_perfect_hum;
+    word.verbs.form1.perfect.hunna = formData.form1_perfect_hunna;
+    word.verbs.form1.imperfect.ana = formData.form1_imperfect_ana;
+    word.verbs.form1.imperfect.anta = formData.form1_imperfect_anta;
+    word.verbs.form1.imperfect.anti = formData.form1_imperfect_anti;
+    word.verbs.form1.imperfect.huwa = formData.form1_imperfect_huwa;
+    word.verbs.form1.imperfect.hiya = formData.form1_imperfect_hiya;
+    word.verbs.form1.imperfect.antuma_male = formData.form1_imperfect_antuma_male;
+    word.verbs.form1.imperfect.antuma_female = formData.form1_imperfect_antuma_female;
+    word.verbs.form1.imperfect.huma_male = formData.form1_imperfect_huma_male;
+    word.verbs.form1.imperfect.huma_female = formData.form1_imperfect_huma_female;
+    word.verbs.form1.imperfect.nahnu = formData.form1_imperfect_nahnu;
+    word.verbs.form1.imperfect.antum = formData.form1_imperfect_antum;
+    word.verbs.form1.imperfect.antunna = formData.form1_imperfect_antunna;
+    word.verbs.form1.imperfect.hum = formData.form1_imperfect_hum;
+    word.verbs.form1.imperfect.hunna = formData.form1_imperfect_hunna;
+    return word;
 }
 
 function addNewWord(req, res) {
-//    console.log(req.body.form1_perfect_ana);
-    // let newWord = new Word(req.body);
-    let newWord = res.locals.word;
-    // //console.log(req.body);
-    let q = newWord.word;
-    Word.exists( { word : q }, (err, result) => {
+    let newWord = createNewWordWithFormData(req.body);
+    Word.exists( { word : newWord.word }, (err, result) => {
         if(result == true) {
             console.log('The word is already in the dictionary');
-            res.render('wordAlreadyExistsResult', { 'q' : q });
+            res.render('wordAlreadyExistsResult', { 'q' : newWord.word });
         } else {
             newWord.save((err, savedWord) => {
                 if (err) {
@@ -76,9 +124,7 @@ function addNewWord(req, res) {
                 }
                 console.log('Word saved to dictionary');
                 res.render('newWordResult', savedWord);
-                // res.json(savedWord);
             });
-            // res.render('newWordResult', res.locals.word);
         }
     });
 }
@@ -97,7 +143,6 @@ function findWord(req, res, next) {
             let id = result[0]._id;
             let form1_perfect_ana = result[0].verbs.form1.perfect.ana;
             let form1_perfect_anta = result[0].verbs.form1.perfect.anta;
-    //        console.log(word, type, id);
             res.render('searchResult', {
                 'q' : q,
                 'word' : word,
@@ -121,25 +166,25 @@ function findWord(req, res, next) {
 
 
 // Update is not recommended. Better use SAVE
-function renderEditWord(req, res) {
-    let word = res.locals.word;
-    console.log('Edited word ID : ' + word.id);
-    word.toObject();
-    Word.update({ _id : word.id }, word, (err, updatedWord) => {
+async function renderEditWord(req, res, next) {
+    let formData = mapFormData2(req.body);
+    Word.findByIdAndUpdate(formData.id, formData, (err, updatedWord) => {
         if (err) {
             res.send(err);
         } else {
             console.log('Word updated');
-            //res.render('newWordResult', savedWord);
-            res.send(updatedWord);
-            console.log(updatedWord._id);
+            Word.findById( {_id : updatedWord._id} , (err, result) => {
+                res.render('editWordResult', result);
+            });
         }
     });
 }
 
+
+
 module.exports = {
     renderIndex,
-    mapFormData,
+    createNewWordWithFormData,
     addNewWord,
     findWord,
     renderEditWord
