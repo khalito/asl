@@ -6,3 +6,11 @@ form(action="/words" method="get")
         input(type="text" name="q" id='searchText' autofocus)
         input(type="submit" value='Yalla !')
         br
+
+h2 Search by ID
+
+form(action='' id='findByIdForm' method="get")
+    div.searchForm
+        input(type='text' id='_id' value='random' onchange='updateFormActionAttribute();')
+        input(type="submit" value='Yalla !')
+        br

@@ -25,3 +25,9 @@ function toggleNewWordForm() {
     togglePronounStatus();
     $( 'div.newWordForm' ).toggle();
 }
+
+function updateFormActionAttribute() {
+    let wordId = $( '#_id' ).val();
+    console.log(wordId);
+    $( '#findByIdForm' ).attr('action', `/words/${wordId}`);
+}

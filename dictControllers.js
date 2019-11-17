@@ -163,7 +163,11 @@ function findWord(req, res, next) {
     });
 }
 
-
+function findWordById(req, res) {
+    Word.findById(req.params.wordId, (err, result) => {
+        res.json(result);
+    });
+}
 // Update is not recommended. Better use SAVE
 async function editWord(req, res) {
     let formData = await mapFormData2(req.body);
@@ -186,5 +190,6 @@ module.exports = {
     createNewWordWithFormData,
     addWord,
     findWord,
-    editWord
+    editWord,
+    findWordById
 };
