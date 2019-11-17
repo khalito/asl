@@ -1,9 +1,9 @@
 const {
     renderIndex,
     createNewWordWithFormData,
-    addNewWord,
+    addWord,
     findWord,
-    renderEditWord } = require('./dictControllers');
+    editWord } = require('./dictControllers');
 
 const getTimestamp = require('./timestamp');
 
@@ -15,11 +15,12 @@ const routes = (app) => {
 
     app.route('/').get((req, res, next) => renderIndex(req, res));
 
-    app.route('/searchResult').get((req, res, next) => findWord(req, res));
+    app.route('/words')
+        .get((req, res, next) => findWord(req, res))
 
-    app.route('/newWord').post((req, res, next) => addNewWord(req, res));
+        .post((req, res, next) => addWord(req, res));
 
-    app.route('/editWord').post((req, res, next) => renderEditWord(req, res));
+    app.route('/words/:wordId').post((req, res) => editWord(req, res));
 };
 
 module.exports = routes;

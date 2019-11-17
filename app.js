@@ -8,6 +8,8 @@ const getTimestamp = require('./timestamp');
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, '/views'));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/words', express.static(path.join(__dirname, 'public')));
+
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 
@@ -15,6 +17,7 @@ const connected_db = 'dict';
 const url = 'mongodb://localhost:27017/' + connected_db;
 const mongoose = require('mongoose');
 const db = mongoose.connection;
+mongoose.set('useFindAndModify', false);
 
 const routes = require('./dictRoutes');
 

@@ -36,7 +36,6 @@ function updateWordPropertiesWithFormData(formData) {
 
 function mapFormData2(formData) {
     let word = {};
-    word.id = formData.id;
     word.word = formData.word;
     word.type = formData.type;
     word.translation = formData.translation;
@@ -111,7 +110,7 @@ function mapFormData(word, formData) {
     return word;
 }
 
-function addNewWord(req, res) {
+function addWord(req, res) {
     let newWord = createNewWordWithFormData(req.body);
     Word.exists( { word : newWord.word }, (err, result) => {
         if(result == true) {
@@ -140,7 +139,7 @@ function findWord(req, res, next) {
             let word = result[0].word;
             let type = result[0].type;
             let translation = result[0].translation;
-            let id = result[0]._id;
+            let _id = result[0]._id;
             let form1_perfect_ana = result[0].verbs.form1.perfect.ana;
             let form1_perfect_anta = result[0].verbs.form1.perfect.anta;
             res.render('searchResult', {
@@ -148,7 +147,7 @@ function findWord(req, res, next) {
                 'word' : word,
                 'type' : type,
                 'translation' : translation,
-                'id' : id,
+                '_id' : _id,
                 verbs : {
                     form1 : {
                         perfect : {
@@ -166,14 +165,14 @@ function findWord(req, res, next) {
 
 
 // Update is not recommended. Better use SAVE
-async function renderEditWord(req, res, next) {
-    let formData = mapFormData2(req.body);
-    Word.findByIdAndUpdate(formData.id, formData, (err, updatedWord) => {
+async function editWord(req, res) {
+    let formData = await mapFormData2(req.body);
+    Word.updateOne({_id : req.params.wordId}, formData, (err, result) => {
         if (err) {
             res.send(err);
         } else {
-            console.log('Word updated');
-            Word.findById( {_id : updatedWord._id} , (err, result) => {
+            // res.json(result);
+            Word.findById(req.params.wordId, (err, result) => {
                 res.render('editWordResult', result);
             });
         }
@@ -185,7 +184,7 @@ async function renderEditWord(req, res, next) {
 module.exports = {
     renderIndex,
     createNewWordWithFormData,
-    addNewWord,
+    addWord,
     findWord,
-    renderEditWord
+    editWord
 };

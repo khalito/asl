@@ -4,6 +4,7 @@ head
     title Edit result
     link(rel='stylesheet' type='text/css' href='styles.css')
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+    script(src="frontEndHelpers.js")
 body
     a(href='/') Back to search
     br
@@ -14,9 +15,8 @@ body
     button(type='button' id='togglePronounStatusButton' name='name' value='value' onclick='togglePronounStatus();') Edit this word
     br    
 
-    form(action='editWord' method='post')
+    form(action=`/words/${_id}` method='post')
         include wordDetails.pug
-        input(type='text' name='id' value=id hidden)
+        input(type='text' name='id' value=_id hidden)
         input(type='submit' id='editWordFormButton' value='Submit your edits' hidden)
     
-    script(src="frontEndHelpers.js")
