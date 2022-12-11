@@ -8,7 +8,7 @@
     "bson": "^4.0.2",
     "bson-ext": "^2.0.2",
     "ejs": "^2.7.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "mongod": "^2.0.0",
     "mongodb": "^3.3.3",
     "mongodb-core": "^3.2.7",
